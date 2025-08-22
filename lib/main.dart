@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_news_mvvm/core/di/di.dart';
 import 'package:flutter_news_mvvm/core/localization/app_localizations.dart';
 import 'package:flutter_news_mvvm/features/news/presentation/bloc/detail_news_bloc.dart';
 import 'package:flutter_news_mvvm/settings/settings_bloc.dart';
@@ -14,6 +15,10 @@ import 'features/news/presentation/pages/news_list_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  //DI
+  setupMain();
+  setupNews();
 
   runApp(
     MultiBlocProvider(

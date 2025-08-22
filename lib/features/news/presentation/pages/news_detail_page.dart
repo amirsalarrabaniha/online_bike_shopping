@@ -1,35 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_news_mvvm/core/di/di.dart';
 import 'package:flutter_news_mvvm/core/utils/localization_extension.dart';
-import 'package:flutter_news_mvvm/features/news/presentation/bloc/detail_news_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class NewsDetailPage extends StatelessWidget {
+class NewsDetailPage extends ConsumerWidget {
+  const NewsDetailPage({super.key});
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final provider = ref.watch(detailNewsProvider);
+
     return Scaffold(
       appBar: AppBar(title: Text(context.l10n.readMore)),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20.0),
-        child: BlocBuilder<DetailNewsBloc, DetailNewsState>(
-          builder: (BuildContext context, DetailNewsState state) {
-            if (state is DetailNewsLoaded) {
-              return Column(
+      body: provider.news == null
+          ? Center(child: Text(context.l10n.search))
+          : SingleChildScrollView(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(state.news.title),
-                  SizedBox(height: 20),
-                  Text(state.news.url),
-                  SizedBox(height: 20),
-                  Text(state.news.content),
-                  SizedBox(height: 20),
-                  Text(state.news.description),
+                  Text(
+                    provider.news!.title,
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    provider.news!.url,
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    provider.news!.content,
+                  ),
+                  const SizedBox(height: 20),
+                  Text(provider.news!.description),
                 ],
-              );
-            }
-
-            return SizedBox();
-          },
-        ),
-      ),
+              ),
+            ),
     );
   }
 }

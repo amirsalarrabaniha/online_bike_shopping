@@ -7,8 +7,7 @@ import 'package:flutter_news_mvvm/features/news/presentation/bloc/detail_news_bl
 import 'package:flutter_news_mvvm/settings/settings_bloc.dart';
 import 'core/theme/app_theme.dart';
 import 'features/news/data/datasources/news_remote_data_source.dart';
-import 'features/news/data/repositories/news_repository_impl.dart'
-    show NewsRepositoryImpl;
+import 'features/news/data/repositories/news_repository_impl.dart';
 import 'features/news/domain/usecases/get_news.dart';
 import 'features/news/presentation/bloc/news_bloc.dart';
 import 'features/news/presentation/pages/news_list_page.dart';

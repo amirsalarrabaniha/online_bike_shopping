@@ -1,8 +1,6 @@
-# Flutter News Clean + Bloc
+# Flutter News Clean + Bloc + DI
 
-A Flutter News application built using **Clean Architecture**, **Bloc** for state management, and *
-*Localization** support (English & Persian). This project demonstrates a modular structure with *
-*theme switching**, network calls via **Dio**, and simple **navigation**.
+A Flutter News application built using **Clean Architecture**, **Bloc** for state management, **Dependency Injection (get\_it)**, and **Localization** support (English & Persian). This project demonstrates a modular structure with **theme switching**, network calls via **Dio**, and simple **navigation**.
 
 ## Features
 
@@ -13,6 +11,7 @@ A Flutter News application built using **Clean Architecture**, **Bloc** for stat
 * English (`en`) and Persian (`fa`) localization
 * Error handling and loading indicators
 * State management with **Bloc**
+* Dependency Injection using **get\_it**
 * Modular project structure
 
 ## Project Structure
@@ -22,6 +21,7 @@ lib/
 │
 ├─ core/
 │   ├─ constants/        # App constants
+│   ├─ di/               # Dependency Injection setup
 │   ├─ error/            # Failures, exceptions
 │   ├─ theme/            # App theme files (light/dark)
 │   └─ usecase/          # Base usecase class
@@ -57,7 +57,7 @@ lib/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/amirsalarrabaniha/flutter_news_clean_bloc.git
+git clone https://github.com/amirsalarrabaniha/flutter_news_clean_bloc_di.git
 cd flutter_news_clean
 ```
 
@@ -73,6 +73,41 @@ flutter pub get
 flutter run
 ```
 
+## Dependency Injection (DI)
+
+Dependency Injection is handled using **get\_it**.
+
+* All Repositories, UseCases, and Blocs are registered in `lib/core/di/di.dart`.
+* Example of registering and providing Blocs:
+
+```dart
+final getIt = GetIt.instance;
+
+void setupDI() {
+  // Repositories
+  getIt.registerLazySingleton<NewsRepository>(() => NewsRepositoryImpl(remoteDataSource: getIt()));
+
+  // UseCases
+  getIt.registerLazySingleton<GetNewsUseCase>(() => GetNewsUseCase(getIt()));
+
+  // Blocs
+  getIt.registerFactory<NewsBloc>(() => NewsBloc(getNewsUseCase: getIt()));
+  getIt.registerFactory<SettingsBloc>(() => SettingsBloc());
+}
+```
+
+Use in `main.dart`:
+
+```dart
+MultiBlocProvider(
+providers: [
+BlocProvider(create: (_) => getIt<SettingsBloc>()),
+BlocProvider(create: (_) => getIt<NewsBloc>()),
+],
+child: MyApp(),
+)
+```
+
 ## Bloc & State Management
 
 * **Bloc** handles all state management for the app.
@@ -80,17 +115,16 @@ flutter run
 * **NewsDetailBloc** → manages news detail data
 * **SettingsBloc** → handles theme and localization
 
-Use Bloc in widgets:
+Example usage in widgets:
 
 ```dart
-BlocBuilder<NewsBloc, NewsState>
-(
-builder: (context, state) {
-if (state is NewsLoading) return CircularProgressIndicator();
-if (state is NewsLoaded) return ListView(...);
-if (state is NewsError) return Text(state.message);
-return Container();
-},
+BlocBuilder<NewsBloc, NewsState>(
+  builder: (context, state) {
+    if (state is NewsLoading) return CircularProgressIndicator();
+    if (state is NewsLoaded) return ListView(...);
+    if (state is NewsError) return Text(state.message);
+    return Container();
+  },
 )
 ```
 
@@ -127,6 +161,7 @@ Switch between **light** and **dark** modes via `SettingsBloc`.
 * `flutter_bloc` → State management
 * `equatable` → Simplify model equality
 * `dio` → Networking
+* `get_it` → Dependency Injection
 * `intl` → Localization
 * `flutter_localizations` → Built-in Flutter localization support
 

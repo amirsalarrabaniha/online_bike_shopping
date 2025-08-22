@@ -1,18 +1,17 @@
-# Flutter News Clean + Bloc + DI
+# Flutter News Clean + Riverpod
 
-A Flutter News application built using **Clean Architecture**, **Bloc** for state management, **Dependency Injection (get\_it)**, and **Localization** support (English & Persian). This project demonstrates a modular structure with **theme switching**, network calls via **Dio**, and simple **navigation**.
+A Flutter News application built using **Clean Architecture**, **Riverpod** for state management, and **Localization** support (English & Persian). This project demonstrates a clean structure with **theme switching**, network calls via **Dio**, and reactive **UI**.
 
 ## Features
 
-* **Clean Architecture** for scalable and maintainable code
+* Clean Architecture for scalable code
 * News listing and news detail page
 * Search functionality
 * Light and dark theme support
 * English (`en`) and Persian (`fa`) localization
 * Error handling and loading indicators
-* State management with **Bloc**
-* Dependency Injection using **get\_it**
-* Modular project structure
+* State management with Riverpod (`StateNotifierProvider`)
+* Modular project structure with DI
 
 ## Project Structure
 
@@ -20,11 +19,11 @@ A Flutter News application built using **Clean Architecture**, **Bloc** for stat
 lib/
 │
 ├─ core/
-│   ├─ constants/        # App constants
-│   ├─ di/               # Dependency Injection setup
+│   ├─ constants/        # App constants (API keys, urls)
+│   ├─ di/               # Dependency Injection setup (Riverpod Providers)
 │   ├─ error/            # Failures, exceptions
-│   ├─ theme/            # App theme files (light/dark)
-│   └─ usecase/          # Base usecase class
+│   ├─ theme/            # App theme (light/dark)
+│   └─ usecase/          # Base UseCase class
 │
 ├─ features/news/
 │   ├─ data/
@@ -38,7 +37,7 @@ lib/
 │   │   └─ usecases/        # UseCase classes
 │   │
 │   └─ presentation/
-│       ├─ bloc/            # Bloc, Event, State
+│       ├─ providers/       # Riverpod StateNotifierProviders
 │       ├─ pages/           # UI pages (NewsListPage, NewsDetailPage)
 │       └─ widgets/         # Reusable widgets
 │
@@ -57,8 +56,8 @@ lib/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/amirsalarrabaniha/flutter_news_clean_bloc_di.git
-cd flutter_news_clean
+git clone https://github.com/amirsalarrabaniha/flutter_news_clean_riverpod.git
+cd flutter_news_clean_riverpod
 ```
 
 2. Install dependencies:
@@ -71,61 +70,6 @@ flutter pub get
 
 ```bash
 flutter run
-```
-
-## Dependency Injection (DI)
-
-Dependency Injection is handled using **get\_it**.
-
-* All Repositories, UseCases, and Blocs are registered in `lib/core/di/di.dart`.
-* Example of registering and providing Blocs:
-
-```dart
-final getIt = GetIt.instance;
-
-void setupDI() {
-  // Repositories
-  getIt.registerLazySingleton<NewsRepository>(() => NewsRepositoryImpl(remoteDataSource: getIt()));
-
-  // UseCases
-  getIt.registerLazySingleton<GetNewsUseCase>(() => GetNewsUseCase(getIt()));
-
-  // Blocs
-  getIt.registerFactory<NewsBloc>(() => NewsBloc(getNewsUseCase: getIt()));
-  getIt.registerFactory<SettingsBloc>(() => SettingsBloc());
-}
-```
-
-Use in `main.dart`:
-
-```dart
-MultiBlocProvider(
-providers: [
-BlocProvider(create: (_) => getIt<SettingsBloc>()),
-BlocProvider(create: (_) => getIt<NewsBloc>()),
-],
-child: MyApp(),
-)
-```
-
-## Bloc & State Management
-
-* **Bloc** handles all state management for the app.
-* **NewsBloc** → manages news list and search events
-* **NewsDetailBloc** → manages news detail data
-* **SettingsBloc** → handles theme and localization
-
-Example usage in widgets:
-
-```dart
-BlocBuilder<NewsBloc, NewsState>(
-  builder: (context, state) {
-    if (state is NewsLoading) return CircularProgressIndicator();
-    if (state is NewsLoaded) return ListView(...);
-    if (state is NewsError) return Text(state.message);
-    return Container();
-  },
-)
 ```
 
 ## Localization
@@ -145,7 +89,7 @@ Generated localization file:
 lib/core/localization/app_localizations.dart
 ```
 
-Use localization in widgets:
+Use localization in widgets like:
 
 ```dart
 Text(context.l10n.newsTitle)
@@ -154,16 +98,45 @@ Text(context.l10n.newsTitle)
 ## Theme
 
 Themes are defined in `core/theme/app_theme.dart`.
-Switch between **light** and **dark** modes via `SettingsBloc`.
+You can switch between **light** and **dark** themes via `SettingsNotifier`:
+
+```dart
+ref.read(settingsProvider.notifier).toggleTheme();
+```
+
+## State Management
+
+* **Riverpod** is used for managing state.
+* Each feature has its own **StateNotifier**:
+
+    * `NewsNotifier` → manages news list and search
+    * `DetailNewsNotifier` → manages selected news for detail page
+    * `SettingsNotifier` → manages locale and theme
+
+## DI (Dependency Injection)
+
+All dependencies are injected via **Riverpod Providers** in `core/di/`:
+
+* RemoteDataSource → Repository → UseCase → StateNotifier
+
+Example:
+
+```dart
+final newsNotifierProvider =
+    StateNotifierProvider<NewsNotifier, NewsState>((ref) {
+  final getNewsUseCase = ref.watch(getNewsUseCaseProvider);
+  return NewsNotifier(getNewsUseCase);
+});
+```
 
 ## Dependencies
 
-* `flutter_bloc` → State management
-* `equatable` → Simplify model equality
+* `flutter_riverpod` → State management
 * `dio` → Networking
-* `get_it` → Dependency Injection
 * `intl` → Localization
 * `flutter_localizations` → Built-in Flutter localization support
+* `equatable` → Simplify model equality
+* `freezed` + `json_serializable` → Immutable models
 
 ## Contributing
 
@@ -175,4 +148,4 @@ Switch between **light** and **dark** modes via `SettingsBloc`.
 
 ## License
 
-This project is **MIT Licensed**
+This project is **MIT Licensed**.

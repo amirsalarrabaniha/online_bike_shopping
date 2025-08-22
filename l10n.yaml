@@ -1,0 +1,10 @@
+synthetic-package: false
+supported-locales: [ 'fa','en' ]
+
+arb-dir: lib/core/localization/l10n
+
+output-class: AppLocal
+output-dir: lib/core/localization
+output-localization-file: app_localizations.dart
+
+untranslated-messages-file: untranslated_messages.txt

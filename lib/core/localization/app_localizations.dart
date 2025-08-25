@@ -120,6 +120,54 @@ abstract class AppLocal {
   /// In en, this message translates to:
   /// **'News App'**
   String get newsApp;
+
+  /// No description provided for @chooseYourBike.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Your Bike'**
+  String get chooseYourBike;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @specification.
+  ///
+  /// In en, this message translates to:
+  /// **'Specification'**
+  String get specification;
+
+  /// No description provided for @addToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Cart'**
+  String get addToCart;
+
+  /// No description provided for @apply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// No description provided for @checkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout'**
+  String get checkout;
+
+  /// No description provided for @myShoppingCart.
+  ///
+  /// In en, this message translates to:
+  /// **'My Shopping Cart'**
+  String get myShoppingCart;
+
+  /// No description provided for @yourCartQualifiesForFreeShipping.
+  ///
+  /// In en, this message translates to:
+  /// **'Your cart qualifies for free shipping'**
+  String get yourCartQualifiesForFreeShipping;
 }
 
 class _AppLocalDelegate extends LocalizationsDelegate<AppLocal> {

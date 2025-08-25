@@ -24,7 +24,7 @@ class MyApp extends ConsumerWidget {
     final settingsState = ref.watch(settingsProvider);
 
     return MaterialApp(
-      theme: AppTheme.lightTheme,
+      theme: AppTheme.darkTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: settingsState.themeMode,
       locale: settingsState.locale,

@@ -3,5 +3,13 @@
   "newsTitle": "News",
   "readMore": "Read More",
   "search": "search..",
-  "newsApp": "News App"
+  "newsApp": "News App",
+  "chooseYourBike": "Choose Your Bike",
+  "description": "Description",
+  "specification": "Specification",
+  "addToCart": "Add to Cart",
+  "apply": "Apply",
+  "checkout": "Checkout",
+  "myShoppingCart": "My Shopping Cart",
+  "yourCartQualifiesForFreeShipping": "Your cart qualifies for free shipping"
 }

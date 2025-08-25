@@ -19,4 +19,29 @@ class AppLocalEn extends AppLocal {
 
   @override
   String get newsApp => 'News App';
+
+  @override
+  String get chooseYourBike => 'Choose Your Bike';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get specification => 'Specification';
+
+  @override
+  String get addToCart => 'Add to Cart';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get myShoppingCart => 'My Shopping Cart';
+
+  @override
+  String get yourCartQualifiesForFreeShipping =>
+      'Your cart qualifies for free shipping';
 }

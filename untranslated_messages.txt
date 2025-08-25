@@ -1,12 +1,1 @@
-{
-  "fa": [
-    "chooseYourBike",
-    "description",
-    "specification",
-    "addToCart",
-    "apply",
-    "checkout",
-    "myShoppingCart",
-    "yourCartQualifiesForFreeShipping"
-  ]
-}
+{}

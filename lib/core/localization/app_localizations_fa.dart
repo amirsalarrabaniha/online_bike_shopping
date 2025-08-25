@@ -9,16 +9,16 @@ class AppLocalFa extends AppLocal {
   AppLocalFa([String locale = 'fa']) : super(locale);
 
   @override
-  String get newsTitle => 'اخبار';
+  String get newsTitle => 'News';
 
   @override
-  String get readMore => 'ادامه مطلب';
+  String get readMore => 'Read More';
 
   @override
-  String get search => 'جست و جو';
+  String get search => 'search..';
 
   @override
-  String get newsApp => 'اپلیکیشن خبر';
+  String get newsApp => 'News App';
 
   @override
   String get chooseYourBike => 'Choose Your Bike';

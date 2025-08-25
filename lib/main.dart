@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news_mvvm/core/localization/app_localizations.dart';
 import 'package:flutter_news_mvvm/core/theme/app_theme.dart';
-import 'package:flutter_news_mvvm/features/news/presentation/pages/news_list_page.dart';
+import 'package:flutter_news_mvvm/features/news/presentation/pages/home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/di/di.dart';

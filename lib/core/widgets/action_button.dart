@@ -5,19 +5,23 @@ import 'package:flutter_svg/svg.dart';
 
 class ActionButton extends StatelessWidget {
   String icon;
+  final GestureTapCallback? onTap;
 
-  ActionButton(this.icon, {super.key});
+  ActionButton(this.icon, {super.key, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 44,
-      height: 44,
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          gradient: AppGradient.buttonGradient,
-          borderRadius: BorderRadius.circular(AppRadius.nRadius)),
-      child: SvgPicture.asset('assets/icons/ic-$icon.svg'),
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: 44,
+        height: 44,
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            gradient: AppGradient.buttonGradient,
+            borderRadius: BorderRadius.circular(AppRadius.nRadius)),
+        child: SvgPicture.asset('assets/icons/ic-$icon.svg'),
+      ),
     );
   }
 }

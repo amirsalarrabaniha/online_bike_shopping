@@ -29,6 +29,9 @@ final getNewsUseCaseProvider = Provider<GetNews>((ref) {
   return GetNews(repository);
 });
 
+// Provider to store an integer
+final counterProvider = StateProvider<int>((ref) => 0);
+
 // Settings StateNotifier provider
 final settingsProvider =
     StateNotifierProvider<SettingsNotifier, SettingsState>((ref) {

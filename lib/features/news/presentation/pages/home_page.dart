@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_news_mvvm/core/constants/app_constants.dart';
 import 'package:flutter_news_mvvm/core/theme/app_colors.dart';
 import 'package:flutter_news_mvvm/core/theme/app_gradient.dart';
 import 'package:flutter_news_mvvm/core/theme/app_radius.dart';
 import 'package:flutter_news_mvvm/core/utils/localization_extension.dart';
 import 'package:flutter_news_mvvm/core/widgets/action_button.dart';
-import 'package:flutter_news_mvvm/core/widgets/border_gradient_widget.dart';
 import 'package:flutter_news_mvvm/core/widgets/slope_radius_widget.dart';
+import 'package:flutter_news_mvvm/features/news/presentation/pages/detail_page.dart';
+import 'package:flutter_news_mvvm/features/news/widgets/bottom_navigation.dart';
+import 'package:flutter_news_mvvm/features/news/widgets/category_card.dart';
+import 'package:flutter_news_mvvm/features/news/widgets/product_card.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class NewsListPage extends ConsumerWidget {
   @override
@@ -39,7 +42,7 @@ class NewsListPage extends ConsumerWidget {
                   gradient: AppGradient.borderGradient,
                 ),
                 borderWidth: 2,
-                bottomSlope: 10,
+                bottomSlope: 8,
                 radius: 20,
                 child: Container(
                   padding: EdgeInsets.all(20),
@@ -50,9 +53,7 @@ class NewsListPage extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Center(
-                          child: Image.asset(
-                              'assets/images/electric_bicycle.png')),
+                      Center(child: Image.asset('assets/images/image0.png')),
                       SizedBox(height: 10),
                       Text(
                         '30% Off',
@@ -68,23 +69,20 @@ class NewsListPage extends ConsumerWidget {
                 ),
               ),
               Transform.translate(
-                offset: Offset(0, -40),
+                offset: Offset(0, -30),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _getCategoryCard(0, 'subtract'),
-                      _getCategoryCard(40, 'road'),
-                      _getCategoryCard(80, 'union'),
-                      _getCategoryCard(120, 'union-1'),
-                      _getCategoryCard(160, 'union'),
+                      for (int i = 0; i < AppConstants.categories.length; i++)
+                        CategoryCard(AppConstants.categories[i], i)
                     ],
                   ),
                 ),
               ),
               Transform.translate(
-                offset: Offset(0, -110),
+                offset: Offset(0, -80),
                 child: GridView.builder(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   shrinkWrap: true,
@@ -92,86 +90,21 @@ class NewsListPage extends ConsumerWidget {
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisSpacing: 20,
                       crossAxisCount: 2,
-                      childAspectRatio: 0.8),
+                      childAspectRatio: 0.7),
                   itemCount: 4,
                   itemBuilder: (context, index) => Transform.translate(
                     offset: Offset(0, index % 2 != 0 ? -40 : 0),
-                    child: SlopeRadiusWidget(
-                      borderDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(AppRadius.nRadius),
-                        gradient: AppGradient.borderGradient,
-                      ),
-                      borderWidth: 2,
-                      bottomSlope: 8,
-                      topSlope: 8,
-                      radius: 20,
-                      child: Container(
-                        padding: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          gradient: AppGradient.cardGradient,
-                          borderRadius:
-                              BorderRadius.circular(AppRadius.nRadius),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Center(
-                              child: Image.asset(
-                                'assets/images/unsplash_removebg_preview.png',
-                                width: 100,
-                                height: 100,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Text(
-                              'Road Helmet',
-                              style: TextStyle(
-                                color: AppColors.secondaryTextColor,
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              'PEUGEOT - LR01',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                              ),
-                            ),
-                            SizedBox(height: 5),
-                            Text(
-                              '\$ 1,999.99',
-                              style: TextStyle(
-                                color: AppColors.secondaryTextColor,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    child: ProductCard(),
                   ),
                 ),
-              )
+              ),
+              SizedBox(height: 60)
             ],
           ),
         ),
       ),
+      extendBody: true,
+      bottomNavigationBar: CustomBottomNav(onTabSelected: (i) {}),
     );
   }
-
-  Widget _getCategoryCard(double bottom, icon) => Padding(
-        padding: EdgeInsets.only(bottom: bottom),
-        child: BorderGradientWidget(
-          padding: EdgeInsets.all(1),
-          width: 60,
-          height: 60,
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: SvgPicture.asset(
-              'assets/icons/ic-$icon.svg',
-              width: 50,
-            ),
-          ),
-        ),
-      );
 }

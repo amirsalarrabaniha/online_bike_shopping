@@ -25,13 +25,13 @@ class BorderGradientWidget extends StatelessWidget {
       padding: padding,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppRadius.nRadius),
-        gradient: AppGradient.borderGradient,
+        gradient: AppGradient.borderGradient.withOpacity(0.2),
       ),
       child: Container(
         width: width,
         height: height,
         decoration: BoxDecoration(
-          gradient: AppGradient.cardGradient,
+          gradient: AppGradient.cardGradient.withOpacity(0.8),
           borderRadius: BorderRadius.circular(AppRadius.nRadius),
         ),
         child: child,

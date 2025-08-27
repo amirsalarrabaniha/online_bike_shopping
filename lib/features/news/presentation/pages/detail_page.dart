@@ -112,7 +112,7 @@ class DetailPage extends StatelessWidget {
                                 child: Text(
                                   '\$ 1,999.99',
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 23,
                                     color: AppColors.colorTextGradiantFrom,
                                   ),
                                 ),

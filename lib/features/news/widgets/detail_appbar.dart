@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news_mvvm/core/widgets/action_button.dart';
 
 class DetailAppbar extends StatelessWidget {
-  const DetailAppbar({super.key});
+  String title;
+
+  DetailAppbar(this.title, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +13,10 @@ class DetailAppbar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Stack(
         children: [
-          ActionButton('chevron.left', onTap: () =>Navigator.pop(context)),
+          ActionButton('chevron.left', onTap: () => Navigator.pop(context)),
           Center(
               child: Text(
-            "PEUGEOT - LR01",
+            title,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           )),
         ],

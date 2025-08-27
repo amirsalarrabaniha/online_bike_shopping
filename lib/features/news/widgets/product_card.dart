@@ -69,7 +69,7 @@ class ProductCard extends StatelessWidget {
       ),
     );
   }
-}
 
-gotoDetail(context) =>
-    Navigator.push(context, MaterialPageRoute(builder: (_) => DetailPage()));
+  gotoDetail(context) =>
+      Navigator.push(context, MaterialPageRoute(builder: (_) => DetailPage()));
+}

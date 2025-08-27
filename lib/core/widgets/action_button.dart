@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:flutter_news_mvvm/core/theme/app_colors.dart';
 import 'package:flutter_news_mvvm/core/theme/app_gradient.dart';
 import 'package:flutter_news_mvvm/core/theme/app_radius.dart';
 import 'package:flutter_svg/svg.dart';

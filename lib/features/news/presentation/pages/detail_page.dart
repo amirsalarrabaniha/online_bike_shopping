@@ -6,6 +6,7 @@ import 'package:flutter_news_mvvm/core/utils/localization_extension.dart';
 import 'package:flutter_news_mvvm/core/widgets/gradient_button.dart';
 import 'package:flutter_news_mvvm/core/widgets/inner_shadow_button.dart';
 import 'package:flutter_news_mvvm/core/widgets/out_shadow_button.dart';
+import 'package:flutter_news_mvvm/features/news/presentation/pages/basket_page.dart';
 import 'package:flutter_news_mvvm/features/news/widgets/detail_appbar.dart';
 
 class DetailPage extends StatelessWidget {
@@ -25,7 +26,7 @@ class DetailPage extends StatelessWidget {
           bottom: false, // disables safe area padding at the bottom
           child: Column(
             children: [
-              DetailAppbar(),
+              DetailAppbar("PEUGEOT - LR01"),
               SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -118,7 +119,8 @@ class DetailPage extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                child: GradientButton(context.l10n.addToCart),
+                                child: GradientButton(context.l10n.addToCart,
+                                    onTap: () => gotoBasket(context)),
                               ),
                             ],
                           ),
@@ -134,4 +136,7 @@ class DetailPage extends StatelessWidget {
       ),
     );
   }
+
+  gotoBasket(context) =>
+      Navigator.push(context, MaterialPageRoute(builder: (_) => BasketPage()));
 }

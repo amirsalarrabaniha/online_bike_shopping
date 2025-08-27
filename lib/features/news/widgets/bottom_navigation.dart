@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_news_mvvm/core/theme/app_gradient.dart';
 import 'package:flutter_news_mvvm/core/theme/app_radius.dart';
 import 'package:flutter_news_mvvm/core/widgets/action_button.dart';
@@ -122,7 +123,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
             )
           : Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: InkWell(
+              child: Bounceable(
                 onTap: () => _onTap(index),
                 child: SvgPicture.asset(
                   'assets/icons/ic-$icon.svg',

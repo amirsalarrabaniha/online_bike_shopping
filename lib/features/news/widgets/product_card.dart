@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_news_mvvm/core/theme/app_colors.dart';
 import 'package:flutter_news_mvvm/core/theme/app_gradient.dart';
 import 'package:flutter_news_mvvm/core/theme/app_radius.dart';
@@ -11,7 +12,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return Bounceable(
       onTap: () => gotoDetail(context),
       child: SlopeRadiusWidget(
         borderDecoration: BoxDecoration(

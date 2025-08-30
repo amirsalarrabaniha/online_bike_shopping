@@ -3,7 +3,6 @@ import 'package:flutter_news_mvvm/core/theme/app_colors.dart';
 import 'package:flutter_news_mvvm/core/theme/app_gradient.dart';
 import 'package:flutter_news_mvvm/core/theme/app_radius.dart';
 import 'package:flutter_news_mvvm/core/utils/random_image.dart';
-import 'package:solar_icons/solar_icons.dart';
 
 class BasketCard extends StatelessWidget {
   const BasketCard({super.key});
@@ -94,7 +93,7 @@ class BasketCard extends StatelessWidget {
                 ],
               ),
             ],
-          ))
+          )),
         ],
       ),
     );

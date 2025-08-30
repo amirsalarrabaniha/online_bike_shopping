@@ -1,151 +1,85 @@
-# Flutter News Clean + Riverpod
+# 🚴‍♂️ online\_bike\_shopping
 
-A Flutter News application built using **Clean Architecture**, **Riverpod** for state management, and **Localization** support (English & Persian). This project demonstrates a clean structure with **theme switching**, network calls via **Dio**, and reactive **UI**.
+**online\_bike\_shopping** is a Flutter application for buying and selling bicycle parts and accessories. It features a beautiful, custom-designed UI with many unique shapes and layouts, creating a modern shopping experience.
 
-## Features
+![App Screenshot](assets/images/screenshot.png)
 
-* Clean Architecture for scalable code
-* News listing and news detail page
-* Search functionality
-* Light and dark theme support
-* English (`en`) and Persian (`fa`) localization
-* Error handling and loading indicators
-* State management with Riverpod (`StateNotifierProvider`)
-* Modular project structure with DI
+---
 
-## Project Structure
+## ✨ Features
+
+* 🏠 **Home Page** – Browse bicycle parts, view categories, and use filters
+* 📄 **Detail Page** – See product details, specifications, and multiple images
+* 🛒 **Basket Page** – Add, remove, and manage items in the shopping cart with real-time price updates
+
+---
+
+## 🏗 Architecture
+
+This project follows **Clean Architecture** principles and uses **Riverpod** for state management.
 
 ```
 lib/
-│
-├─ core/
-│   ├─ constants/        # App constants (API keys, urls)
-│   ├─ di/               # Dependency Injection setup (Riverpod Providers)
-│   ├─ error/            # Failures, exceptions
-│   ├─ theme/            # App theme (light/dark)
-│   └─ usecase/          # Base UseCase class
-│
-├─ features/news/
-│   ├─ data/
-│   │   ├─ datasources/     # Remote / Local data sources
-│   │   ├─ models/          # Models and JSON parsing
-│   │   └─ repositories/    # Repository implementations
-│   │
-│   ├─ domain/
-│   │   ├─ entities/        # Entity classes
-│   │   ├─ repositories/    # Repository contracts
-│   │   └─ usecases/        # UseCase classes
-│   │
-│   └─ presentation/
-│       ├─ providers/       # Riverpod StateNotifierProviders
-│       ├─ pages/           # UI pages (NewsListPage, NewsDetailPage)
-│       └─ widgets/         # Reusable widgets
-│
-└─ main.dart
+├── features/
+│   ├── home/
+│   │   ├── view/         # HomePage widgets
+│   │   ├── controller/   # Riverpod providers & state logic
+│   │   └── widgets/      # Reusable widgets
+│   ├── detail/
+│   │   ├── view/
+│   │   ├── controller/
+│   │   └── widgets/
+│   └── basket/
+│       ├── view/
+│       ├── controller/
+│       └── widgets/
+├── core/
+│   ├── theme/            # App colors, typography, shapes
+│   ├── utils/            # Helpers & constants
+│   └── network/          # API services
+└── main.dart
 ```
 
-## Getting Started
+---
 
-### Prerequisites
+## 🧩 State Management
 
-* Flutter SDK >= 3.6.2
-* Dart >= 3.6.2
+* **Riverpod** is used to manage state across pages.
+* Providers are organized by feature, making it easy to scale and maintain.
 
-### Installation
+Example:
 
-1. Clone the repository:
+```dart
+final basketProvider = StateNotifierProvider<BasketController, List<Product>>((ref) {
+  return BasketController();
+});
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository:
 
 ```bash
-git clone https://github.com/amirsalarrabaniha/flutter_news_clean_riverpod.git
-cd flutter_news_clean_riverpod
+git clone https://github.com/your-username/online_bike_shopping.git
+cd online_bike_shopping
 ```
 
-2. Install dependencies:
+### 2. Install dependencies:
 
 ```bash
 flutter pub get
 ```
 
-3. Run the app:
+### 3. Run the app:
 
 ```bash
 flutter run
 ```
 
-## Localization
+---
 
-Localization is handled via ARB files located in:
+## 📄 License
 
-```
-lib/core/localization/l10n/
-```
-
-* `app_en.arb` → English
-* `app_fa.arb` → Persian
-
-Generated localization file:
-
-```
-lib/core/localization/app_localizations.dart
-```
-
-Use localization in widgets like:
-
-```dart
-Text(context.l10n.newsTitle)
-```
-
-## Theme
-
-Themes are defined in `core/theme/app_theme.dart`.
-You can switch between **light** and **dark** themes via `SettingsNotifier`:
-
-```dart
-ref.read(settingsProvider.notifier).toggleTheme();
-```
-
-## State Management
-
-* **Riverpod** is used for managing state.
-* Each feature has its own **StateNotifier**:
-
-    * `NewsNotifier` → manages news list and search
-    * `DetailNewsNotifier` → manages selected news for detail page
-    * `SettingsNotifier` → manages locale and theme
-
-## DI (Dependency Injection)
-
-All dependencies are injected via **Riverpod Providers** in `core/di/`:
-
-* RemoteDataSource → Repository → UseCase → StateNotifier
-
-Example:
-
-```dart
-final newsNotifierProvider =
-    StateNotifierProvider<NewsNotifier, NewsState>((ref) {
-  final getNewsUseCase = ref.watch(getNewsUseCaseProvider);
-  return NewsNotifier(getNewsUseCase);
-});
-```
-
-## Dependencies
-
-* `flutter_riverpod` → State management
-* `dio` → Networking
-* `intl` → Localization
-* `flutter_localizations` → Built-in Flutter localization support
-* `equatable` → Simplify model equality
-* `freezed` + `json_serializable` → Immutable models
-
-## Contributing
-
-1. Fork the project
-2. Create a new branch (`git checkout -b feature/your-feature`)
-3. Commit your changes (`git commit -m "Add some feature"`)
-4. Push to the branch (`git push origin feature/your-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is **MIT Licensed**.
+This project is open-source and available under the [MIT License](LICENSE).

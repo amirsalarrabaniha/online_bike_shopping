@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_mvvm/core/theme/app_gradient.dart';
-import 'package:flutter_news_mvvm/core/theme/app_radius.dart';
+import 'package:online_bike_shopping/core/theme/app_gradient.dart';
+import 'package:online_bike_shopping/core/theme/app_radius.dart';
 
 class BorderGradientWidget extends StatelessWidget {
   final EdgeInsetsGeometry? padding;

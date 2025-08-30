@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_mvvm/core/constants/app_constants.dart';
-import 'package:flutter_news_mvvm/core/theme/app_colors.dart';
-import 'package:flutter_news_mvvm/core/theme/app_gradient.dart';
-import 'package:flutter_news_mvvm/core/theme/app_radius.dart';
-import 'package:flutter_news_mvvm/core/utils/localization_extension.dart';
-import 'package:flutter_news_mvvm/core/widgets/action_button.dart';
-import 'package:flutter_news_mvvm/core/widgets/slope_radius_widget.dart';
-import 'package:flutter_news_mvvm/features/news/presentation/pages/detail_page.dart';
-import 'package:flutter_news_mvvm/features/news/widgets/bottom_navigation.dart';
-import 'package:flutter_news_mvvm/features/news/widgets/category_card.dart';
-import 'package:flutter_news_mvvm/features/news/widgets/product_card.dart';
+import 'package:online_bike_shopping/core/constants/app_constants.dart';
+import 'package:online_bike_shopping/core/theme/app_colors.dart';
+import 'package:online_bike_shopping/core/theme/app_gradient.dart';
+import 'package:online_bike_shopping/core/theme/app_radius.dart';
+import 'package:online_bike_shopping/core/utils/localization_extension.dart';
+import 'package:online_bike_shopping/core/widgets/action_button.dart';
+import 'package:online_bike_shopping/core/widgets/slope_radius_widget.dart';
+import 'package:online_bike_shopping/features/detail/presentation/pages/detail_page.dart';
+import 'package:online_bike_shopping/features/home/widgets/bottom_navigation.dart';
+import 'package:online_bike_shopping/features/home/widgets/category_card.dart';
+import 'package:online_bike_shopping/features/home/widgets/product_card.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class NewsListPage extends ConsumerWidget {

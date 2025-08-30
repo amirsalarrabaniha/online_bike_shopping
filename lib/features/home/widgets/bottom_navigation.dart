@@ -2,10 +2,10 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
-import 'package:flutter_news_mvvm/core/theme/app_gradient.dart';
-import 'package:flutter_news_mvvm/core/theme/app_radius.dart';
-import 'package:flutter_news_mvvm/core/widgets/action_button.dart';
-import 'package:flutter_news_mvvm/core/widgets/slope_radius_widget.dart';
+import 'package:online_bike_shopping/core/theme/app_gradient.dart';
+import 'package:online_bike_shopping/core/theme/app_radius.dart';
+import 'package:online_bike_shopping/core/widgets/action_button.dart';
+import 'package:online_bike_shopping/core/widgets/slope_radius_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/theme/app_colors.dart' show AppColors;

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
-import 'package:flutter_news_mvvm/core/theme/app_colors.dart';
-import 'package:flutter_news_mvvm/core/theme/app_gradient.dart';
-import 'package:flutter_news_mvvm/core/theme/app_radius.dart';
-import 'package:flutter_news_mvvm/core/widgets/border_gradient_widget.dart';
-import 'package:flutter_news_mvvm/features/news/model/category_model.dart';
+import 'package:online_bike_shopping/core/theme/app_colors.dart';
+import 'package:online_bike_shopping/core/theme/app_gradient.dart';
+import 'package:online_bike_shopping/core/theme/app_radius.dart';
+import 'package:online_bike_shopping/core/widgets/border_gradient_widget.dart';
+import 'package:online_bike_shopping/features/home/model/category_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_news_mvvm/core/di/di.dart';
+import 'package:online_bike_shopping/core/di/di.dart';
 
 class CategoryCard extends ConsumerWidget {
   CategoryModel item;

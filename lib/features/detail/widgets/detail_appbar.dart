@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_mvvm/core/widgets/action_button.dart';
+import 'package:online_bike_shopping/core/widgets/action_button.dart';
 
 class DetailAppbar extends StatelessWidget {
   String title;

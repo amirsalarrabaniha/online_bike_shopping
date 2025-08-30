@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_mvvm/core/theme/app_colors.dart';
-import 'package:flutter_news_mvvm/core/theme/app_radius.dart';
-import 'package:flutter_news_mvvm/core/widgets/inner_shadow.dart';
+import 'package:online_bike_shopping/core/theme/app_colors.dart';
+import 'package:online_bike_shopping/core/theme/app_radius.dart';
+import 'package:online_bike_shopping/core/widgets/inner_shadow.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class InnerShadowButton extends StatelessWidget {

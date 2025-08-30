@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
-import 'package:flutter_news_mvvm/core/theme/app_gradient.dart';
-import 'package:flutter_news_mvvm/core/theme/app_radius.dart';
+import 'package:online_bike_shopping/core/theme/app_gradient.dart';
+import 'package:online_bike_shopping/core/theme/app_radius.dart';
 import 'package:flutter_svg/svg.dart';
 
 class GradientButton extends StatelessWidget {

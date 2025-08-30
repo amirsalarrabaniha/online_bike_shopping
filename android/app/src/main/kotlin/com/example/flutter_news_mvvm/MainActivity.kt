@@ -1,4 +1,4 @@
-package com.example.flutter_news_mvvm
+package com.example.online_bike_shopping
 
 import io.flutter.embedding.android.FlutterActivity
 

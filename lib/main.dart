@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_mvvm/core/localization/app_localizations.dart';
-import 'package:flutter_news_mvvm/core/theme/app_theme.dart';
-import 'package:flutter_news_mvvm/features/news/presentation/pages/home_page.dart';
+import 'package:online_bike_shopping/core/localization/app_localizations.dart';
+import 'package:online_bike_shopping/core/theme/app_theme.dart';
+import 'package:online_bike_shopping/features/home/presentation/pages/home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/di/di.dart';

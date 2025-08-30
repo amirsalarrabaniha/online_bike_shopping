@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
-import 'package:flutter_news_mvvm/core/theme/app_colors.dart';
-import 'package:flutter_news_mvvm/core/theme/app_gradient.dart';
-import 'package:flutter_news_mvvm/core/theme/app_radius.dart';
-import 'package:flutter_news_mvvm/core/utils/random_image.dart';
-import 'package:flutter_news_mvvm/core/widgets/slope_radius_widget.dart';
-import 'package:flutter_news_mvvm/features/news/presentation/pages/detail_page.dart';
+import 'package:online_bike_shopping/core/theme/app_colors.dart';
+import 'package:online_bike_shopping/core/theme/app_gradient.dart';
+import 'package:online_bike_shopping/core/theme/app_radius.dart';
+import 'package:online_bike_shopping/core/utils/random_image.dart';
+import 'package:online_bike_shopping/core/widgets/slope_radius_widget.dart';
+import 'package:online_bike_shopping/features/detail/presentation/pages/detail_page.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key});

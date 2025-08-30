@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="flutter_news_mvvm"
+        android:label="online_bike_shopping"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

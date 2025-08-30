@@ -1,4 +1,4 @@
-import 'package:flutter_news_mvvm/features/news/model/category_model.dart';
+import 'package:online_bike_shopping/features/home/model/category_model.dart';
 
 class AppConstants {
   static const appName = "News App";

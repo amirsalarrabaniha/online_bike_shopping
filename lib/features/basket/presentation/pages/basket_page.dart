@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_mvvm/core/theme/app_colors.dart';
-import 'package:flutter_news_mvvm/core/theme/app_gradient.dart';
-import 'package:flutter_news_mvvm/core/theme/app_radius.dart';
-import 'package:flutter_news_mvvm/core/utils/localization_extension.dart';
-import 'package:flutter_news_mvvm/core/widgets/gradient_button.dart';
-import 'package:flutter_news_mvvm/core/widgets/inner_shadow_button.dart';
-import 'package:flutter_news_mvvm/core/widgets/out_shadow_button.dart';
-import 'package:flutter_news_mvvm/features/news/widgets/basket_card.dart';
-import 'package:flutter_news_mvvm/features/news/widgets/detail_appbar.dart';
+import 'package:online_bike_shopping/core/theme/app_colors.dart';
+import 'package:online_bike_shopping/core/utils/localization_extension.dart';
+import 'package:online_bike_shopping/features/home/widgets/basket_card.dart';
+import 'package:online_bike_shopping/features/detail/widgets/detail_appbar.dart';
 
 class BasketPage extends StatelessWidget {
   const BasketPage({super.key});

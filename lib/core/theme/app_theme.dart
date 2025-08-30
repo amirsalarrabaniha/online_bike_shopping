@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_mvvm/core/constants/app_constants.dart';
-import 'package:flutter_news_mvvm/core/theme/app_colors.dart';
+import 'package:online_bike_shopping/core/constants/app_constants.dart';
+import 'package:online_bike_shopping/core/theme/app_colors.dart';
 
 class AppTheme {
   static final lightTheme = ThemeData(
